@@ -1,0 +1,26 @@
+// ==UserScript==
+// @name         Membean Input Type Changer
+// @namespace    http://tampermonkey.net/
+// @version      0.1
+// @description  Change input type attribute from "hidden" to "visible" on Membean page refresh
+// @author       Your Name
+// @match        https://membean.com/*
+// @grant        none
+// ==/UserScript==
+
+(function() {
+    'use strict';
+
+    function changeTypeAttribute() {
+        const inputElement = document.getElementById("pass__event");
+        if (inputElement) {
+            inputElement.setAttribute("type", "visible");
+        }
+    }
+
+    function loopChangeType() {
+        setInterval(changeTypeAttribute, 1000); // Adjust the interval as needed (in milliseconds)
+    }
+
+    window.addEventListener('load', loopChangeType);
+})();
